@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Advanced Password Generator</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>🔐 Password Generator</h1>
+
+      <div class="form-group">
+        <label>Password Length</label>
+        <div class="length-display" id="lengthDisplay">12</div>
+        <input type="range" id="lengthSlider" min="4" max="64" value="12" />
+      </div>
+
+      <div class="preset-buttons">
+        <button class="preset-btn" onclick="setPreset('basic')">Basic</button>
+        <button class="preset-btn" onclick="setPreset('strong')">Strong</button>
+        <button class="preset-btn" onclick="setPreset('ultra')">
+          Ultra Secure
+        </button>
+        <button class="preset-btn" onclick="setPreset('memorable')">
+          Memorable
+        </button>
+      </div>
+
+      <div class="options-section">
+        <div class="options-title">Character Types</div>
+        <div class="checkbox-group">
+          <div class="checkbox-item">
+            <input type="checkbox" id="lowercase" checked />
+            <label for="lowercase">Lowercase (a-z)</label>
+          </div>
+          <div class="checkbox-item">
+            <input type="checkbox" id="uppercase" checked />
+            <label for="uppercase">Uppercase (A-Z)</label>
+          </div>
+          <div class="checkbox-item">
+            <input type="checkbox" id="numbers" checked />
+            <label for="numbers">Numbers (0-9)</label>
+          </div>
+          <div class="checkbox-item">
+            <input type="checkbox" id="symbols" checked />
+            <label for="symbols">Symbols (!@#$%)</label>
+          </div>
+        </div>
+
+        <div class="checkbox-item" style="grid-column: 1 / -1">
+          <input type="checkbox" id="excludeSimilar" />
+          <label for="excludeSimilar"
+            >Exclude similar characters (0, O, l, I, 1)</label
+          >
+        </div>
+      </div>
+
+      <div class="strength-meter">
+        <div class="strength-bar">
+          <div class="strength-fill" id="strengthFill"></div>
+        </div>
+        <div class="strength-text" id="strengthText">Medium</div>
+      </div>
+
+      <button class="generate-btn" onclick="generatePassword()">
+        🎲 Generate Password
+      </button>
+
+      <div class="password-output" id="passwordOutput">
+        <span class="password-text" id="passwordText"
+          >Click generate to create a password...</span
+        >
+        <button
+          class="copy-btn"
+          id="copyBtn"
+          onclick="copyPassword()"
+          style="display: none"
+        >
+          Copy
+        </button>
+      </div>
+
+      <div class="options-section">
+        <div class="options-title">Password History</div>
+        <div class="history" id="passwordHistory">
+          <div style="text-align: center; color: #666; font-style: italic">
+            No passwords generated yet
+          </div>
+        </div>
+        <button class="clear-history" onclick="clearHistory()">
+          Clear History
+        </button>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
